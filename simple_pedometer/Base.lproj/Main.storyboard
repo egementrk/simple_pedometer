@@ -30,7 +30,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="None" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CAa-9e-dO3" userLabel="ActivityLabel">
-                                <rect key="frame" x="20" y="131" width="122" height="21"/>
+                                <rect key="frame" x="20" y="131" width="233" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -56,6 +56,7 @@
                     </view>
                     <connections>
                         <outlet property="activityValue" destination="CAa-9e-dO3" id="pVD-dq-Cbc"/>
+                        <outlet property="stepValue" destination="oLV-OU-VlV" id="13t-T6-7L8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Nr-fN-lbS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
