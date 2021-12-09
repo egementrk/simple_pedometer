@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OR9-E3-v7f">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,40 +12,35 @@
             <objects>
                 <viewController id="OR9-E3-v7f" customClass="MainVC" customModule="simple_pedometer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Q94-AJ-cH2">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Activity Type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rAd-m3-9jM">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activity Type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rAd-m3-9jM">
                                 <rect key="frame" x="20" y="88" width="93" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TOTAL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="deU-8O-WFL">
-                                <rect key="frame" x="20" y="186" width="49" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TOTAL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="deU-8O-WFL">
+                                <rect key="frame" x="20" y="186.33333333333334" width="49" height="18"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="None" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CAa-9e-dO3" userLabel="ActivityLabel">
-                                <rect key="frame" x="20" y="131" width="233" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="None" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CAa-9e-dO3" userLabel="ActivityLabel">
+                                <rect key="frame" x="20" y="114.00000000000001" width="75" height="34.666666666666671"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oLV-OU-VlV" userLabel="StepLabel">
-                                <rect key="frame" x="20" y="222" width="17" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oLV-OU-VlV" userLabel="StepLabel">
+                                <rect key="frame" x="20" y="219.33333333333334" width="17" height="35"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="step" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RFM-Z0-qi4">
-                                <rect key="frame" x="51" y="235" width="31" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="step" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RFM-Z0-qi4">
+                                <rect key="frame" x="51" y="236.33333333333334" width="31" height="18"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -53,6 +48,18 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="PoI-d0-A4y"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="deU-8O-WFL" firstAttribute="top" secondItem="CAa-9e-dO3" secondAttribute="bottom" constant="37.5" id="3tI-JS-d77"/>
+                            <constraint firstItem="oLV-OU-VlV" firstAttribute="leading" secondItem="PoI-d0-A4y" secondAttribute="leading" constant="20" id="DpQ-zl-lTH"/>
+                            <constraint firstItem="RFM-Z0-qi4" firstAttribute="top" secondItem="deU-8O-WFL" secondAttribute="bottom" constant="32" id="HFL-0M-v09"/>
+                            <constraint firstItem="rAd-m3-9jM" firstAttribute="leading" secondItem="PoI-d0-A4y" secondAttribute="leading" constant="20" id="OAJ-Yp-FOl"/>
+                            <constraint firstItem="CAa-9e-dO3" firstAttribute="top" secondItem="rAd-m3-9jM" secondAttribute="bottom" constant="8" symbolic="YES" id="Zie-HA-lEx"/>
+                            <constraint firstItem="RFM-Z0-qi4" firstAttribute="leading" secondItem="oLV-OU-VlV" secondAttribute="trailing" constant="14" id="bZQ-p3-eoj"/>
+                            <constraint firstItem="deU-8O-WFL" firstAttribute="leading" secondItem="PoI-d0-A4y" secondAttribute="leading" constant="20" id="hSZ-mi-Ogv"/>
+                            <constraint firstItem="rAd-m3-9jM" firstAttribute="top" secondItem="PoI-d0-A4y" secondAttribute="top" constant="44" id="ipm-tq-4w0"/>
+                            <constraint firstItem="CAa-9e-dO3" firstAttribute="leading" secondItem="PoI-d0-A4y" secondAttribute="leading" constant="20" id="oY3-6h-UcJ"/>
+                            <constraint firstItem="oLV-OU-VlV" firstAttribute="top" secondItem="deU-8O-WFL" secondAttribute="bottom" constant="15" id="yNe-rN-SHe"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="activityValue" destination="CAa-9e-dO3" id="pVD-dq-Cbc"/>
@@ -61,7 +68,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Nr-fN-lbS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-57.971014492753625" y="111.83035714285714"/>
+            <point key="canvasLocation" x="-58.878504672897193" y="111.44708423326135"/>
         </scene>
     </scenes>
 </document>
