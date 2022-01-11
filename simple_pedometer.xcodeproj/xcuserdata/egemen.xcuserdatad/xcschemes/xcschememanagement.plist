@@ -7,7 +7,25 @@
 		<key>simple_pedometer.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>4</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>888E4340275CE055003C103E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>888E4359275CE057003C103E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>888E4363275CE057003C103E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

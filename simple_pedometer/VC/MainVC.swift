@@ -10,15 +10,18 @@ import CoreMotion
 //Core Motion reports motion- and environment-related data
 //from the onboard hardware of iOS devices
 import CoreData
+import Charts
 
 let appDelegate = UIApplication.shared.delegate as! AppDelegate
 let context = appDelegate.persistentContainer.viewContext
 
 
-class MainVC: UIViewController {
+class MainVC: UIViewController, ChartViewDelegate{
+    
+    var barChart = BarChartView()
+    var pieChart = PieChartView()
     
     let stepData = Step(context: context)
-    var step = [Step]()
     
     @IBOutlet weak var activityValue: UILabel!
     @IBOutlet weak var stepValue: UILabel!
@@ -33,8 +36,8 @@ class MainVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //stepData.current_step = "15"
         
+        pieChart.delegate = self
         // Do any additional setup after loading the view.
         if CMMotionActivityManager.isActivityAvailable(){
             //if detect any activity
@@ -54,13 +57,14 @@ class MainVC: UIViewController {
         }
         
         
+        
         if CMPedometer.isStepCountingAvailable(){
             self.pedometer.startUpdates(from: Date()){(data ,error) in
                 if error == nil {
                     if let response = data {
                         DispatchQueue.main.async {
                             self.stepValue.text = "\(response.numberOfSteps)"
-                            self.stepData.current_step = self.stepValue.text
+                            //self.stepData.current_step = self.stepValue.text
                             //appDelegate.saveContext()
                         }
                     }
@@ -68,24 +72,66 @@ class MainVC: UIViewController {
             }
         }
     }
+    var stepValues = [Step]()
+    
     override func viewWillAppear(_ animated: Bool){
-            if stepData.current_step == nil {
+        
+        do {
+            stepValues = try context.fetch(Step.fetchRequest())
+        } catch  {
+            print("")
+        }
+        print(stepValues)
+        
+        if stepData.current_step == nil {
                 stepValue.text = "None"
             }else{
-                stepValue.text = stepData.current_step!
-            }
+                stepValue.text = stepData.current_step
+                }
     }
+    
     
     override func viewWillDisappear(_ animated: Bool) {
         stepData.current_step = "15"
-        do {
-            print("Başarılı")
-            try context.save()
-        } catch  {
-            print("error")
-        }
+        appDelegate.saveContext()
     }
-
+    
+    // MARK: Graphic
+    override func viewDidLayoutSubviews() {
+        let width = view.frame.size.width
+        //let height = view.frame.size.height
+        super.viewDidLayoutSubviews()
+        /*barChart.frame = CGRect(x: 0, y: width, width: width, height: width)
+        //barChart.center = view.center
+        view.addSubview(barChart)
+        
+        var entries = [BarChartDataEntry]()
+        
+        for x in 0..<10 {
+            entries.append(BarChartDataEntry(x: Double(x), y: Double(x)))
+        }
+        
+        let set = BarChartDataSet(entries: entries)
+        set.colors = ChartColorTemplates.joyful()
+        let data = BarChartData(dataSet: set)
+        barChart.data = data*/
+        
+        
+        
+        pieChart.frame = CGRect(x: 0, y: width, width: width, height: width * 0.75)
+        
+        view.addSubview(pieChart)
+        
+        var entries = [BarChartDataEntry]()
+        for x in 0..<7 {
+            entries.append(BarChartDataEntry(x: Double(x), y: Double(x)))
+        }
+        let set = PieChartDataSet(entries: entries)
+        set.colors = ChartColorTemplates.pastel()
+        let data = PieChartData(dataSet: set)
+        pieChart.data = data
+        
+    }
 
 
 }

@@ -1,0 +1,6 @@
+framework module Pods_simple_pedometerTests {
+  umbrella header "Pods-simple_pedometerTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
