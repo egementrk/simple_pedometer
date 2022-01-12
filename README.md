@@ -1,6 +1,6 @@
 # Simple Pedometer
 
-Not released, core data coming soon
+Not released,
 
 ## Preview
 #### iPhone 11  
