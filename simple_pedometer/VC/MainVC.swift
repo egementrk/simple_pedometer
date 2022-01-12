@@ -7,13 +7,9 @@
 
 import UIKit
 import CoreMotion
-//Core Motion reports motion- and environment-related data
-//from the onboard hardware of iOS devices
 import CoreData
 import Charts
 
-let appDelegate = UIApplication.shared.delegate as! AppDelegate
-let context = appDelegate.persistentContainer.viewContext
 
 
 class MainVC: UIViewController, ChartViewDelegate{
@@ -21,7 +17,9 @@ class MainVC: UIViewController, ChartViewDelegate{
     var barChart = BarChartView()
     var pieChart = PieChartView()
     
-    let stepData = Step(context: context)
+    let userDefaults = UserDefaults.standard
+    
+    
     
     @IBOutlet weak var activityValue: UILabel!
     @IBOutlet weak var stepValue: UILabel!
@@ -31,14 +29,15 @@ class MainVC: UIViewController, ChartViewDelegate{
 
     private let pedometer = CMPedometer()
     //For fetching the system-generated live walking data.
-    //let testWalking = CMMotionActivity()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        pieChart.delegate = self
         // Do any additional setup after loading the view.
+        pieChart.delegate = self
+
+        let currentStep = userDefaults.integer(forKey: "currentStep")
+        
         if CMMotionActivityManager.isActivityAvailable(){
             //if detect any activity
             self.activityManager.startActivityUpdates(to: OperationQueue.main){
@@ -63,73 +62,40 @@ class MainVC: UIViewController, ChartViewDelegate{
                 if error == nil {
                     if let response = data {
                         DispatchQueue.main.async {
-                            self.stepValue.text = "\(response.numberOfSteps)"
-                            //self.stepData.current_step = self.stepValue.text
-                            //appDelegate.saveContext()
+                            self.stepValue.text = "\(currentStep + Int(response.numberOfSteps))"
                         }
                     }
                 }
             }
         }
     }
-    var stepValues = [Step]()
     
     override func viewWillAppear(_ animated: Bool){
-        
-        do {
-            stepValues = try context.fetch(Step.fetchRequest())
-        } catch  {
-            print("")
-        }
-        print(stepValues)
-        
-        if stepData.current_step == nil {
-                stepValue.text = "None"
-            }else{
-                stepValue.text = stepData.current_step
-                }
+        stepValue.text = String(userDefaults.integer(forKey: "currentStep"))
     }
     
     
     override func viewWillDisappear(_ animated: Bool) {
-        stepData.current_step = "15"
-        appDelegate.saveContext()
+        userDefaults.set(Int(stepValue.text!), forKey: "currentStep")
     }
     
     // MARK: Graphic
     override func viewDidLayoutSubviews() {
         let width = view.frame.size.width
-        //let height = view.frame.size.height
         super.viewDidLayoutSubviews()
-        /*barChart.frame = CGRect(x: 0, y: width, width: width, height: width)
-        //barChart.center = view.center
+        barChart.frame = CGRect(x: 0, y: width, width: width, height: width * 0.60)
         view.addSubview(barChart)
         
         var entries = [BarChartDataEntry]()
         
-        for x in 0..<10 {
+        for x in 0..<8 {
             entries.append(BarChartDataEntry(x: Double(x), y: Double(x)))
         }
         
         let set = BarChartDataSet(entries: entries)
         set.colors = ChartColorTemplates.joyful()
         let data = BarChartData(dataSet: set)
-        barChart.data = data*/
-        
-        
-        
-        pieChart.frame = CGRect(x: 0, y: width, width: width, height: width * 0.75)
-        
-        view.addSubview(pieChart)
-        
-        var entries = [BarChartDataEntry]()
-        for x in 0..<7 {
-            entries.append(BarChartDataEntry(x: Double(x), y: Double(x)))
-        }
-        let set = PieChartDataSet(entries: entries)
-        set.colors = ChartColorTemplates.pastel()
-        let data = PieChartData(dataSet: set)
-        pieChart.data = data
+        barChart.data = data
         
     }
 
