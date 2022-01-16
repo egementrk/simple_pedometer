@@ -10,15 +10,12 @@ import CoreMotion
 import CoreData
 import Charts
 
-
-
 class MainVC: UIViewController, ChartViewDelegate{
     
     var barChart = BarChartView()
-    var pieChart = PieChartView()
     
+    //for store data
     let userDefaults = UserDefaults.standard
-    
     
     
     @IBOutlet weak var activityValue: UILabel!
@@ -33,10 +30,9 @@ class MainVC: UIViewController, ChartViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
-        pieChart.delegate = self
-
-        let currentStep = userDefaults.integer(forKey: "currentStep")
+        barChart.delegate = self
+        
+        
         
         if CMMotionActivityManager.isActivityAvailable(){
             //if detect any activity
@@ -56,6 +52,7 @@ class MainVC: UIViewController, ChartViewDelegate{
         }
         
         
+        let currentStep = userDefaults.integer(forKey: "currentStep")
         
         if CMPedometer.isStepCountingAvailable(){
             self.pedometer.startUpdates(from: Date()){(data ,error) in
@@ -63,6 +60,7 @@ class MainVC: UIViewController, ChartViewDelegate{
                     if let response = data {
                         DispatchQueue.main.async {
                             self.stepValue.text = "\(currentStep + Int(response.numberOfSteps))"
+                                self.userDefaults.set(Int(self.stepValue.text!), forKey: "currentStep")
                         }
                     }
                 }
@@ -70,16 +68,19 @@ class MainVC: UIViewController, ChartViewDelegate{
         }
     }
     
+    // MARK: Data Read Section
     override func viewWillAppear(_ animated: Bool){
         stepValue.text = String(userDefaults.integer(forKey: "currentStep"))
     }
     
-    
+    // MARK: Data Save Section
+    //bir kaç kaydetme sıkıntısı daha ayrıca
     override func viewWillDisappear(_ animated: Bool) {
-        userDefaults.set(Int(stepValue.text!), forKey: "currentStep")
+        //userDefaults.set(Int(stepValue.text!), forKey: "currentStep")
     }
     
     // MARK: Graphic
+    // TODO: Gün değerleri 
     override func viewDidLayoutSubviews() {
         let width = view.frame.size.width
         super.viewDidLayoutSubviews()
