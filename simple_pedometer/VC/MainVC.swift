@@ -17,6 +17,8 @@ class MainVC: UIViewController, ChartViewDelegate{
     //for store data
     let userDefaults = UserDefaults.standard
     
+    var days: [String: Int] = ["1":30,"2":24,"3":45,"4":25,"5":54,"6":50,"7":100]
+    let date = Date()
     
     @IBOutlet weak var activityValue: UILabel!
     @IBOutlet weak var stepValue: UILabel!
@@ -32,6 +34,7 @@ class MainVC: UIViewController, ChartViewDelegate{
         
         barChart.delegate = self
         
+        print("day: \(date.get(.weekdayOrdinal))")
         
         
         if CMMotionActivityManager.isActivityAvailable(){
@@ -74,7 +77,6 @@ class MainVC: UIViewController, ChartViewDelegate{
     }
     
     // MARK: Data Save Section
-    //bir kaç kaydetme sıkıntısı daha ayrıca
     override func viewWillDisappear(_ animated: Bool) {
         //userDefaults.set(Int(stepValue.text!), forKey: "currentStep")
     }
@@ -89,8 +91,8 @@ class MainVC: UIViewController, ChartViewDelegate{
         
         var entries = [BarChartDataEntry]()
         
-        for x in 0..<8 {
-            entries.append(BarChartDataEntry(x: Double(x), y: Double(x)))
+        for x in 1..<8 {
+            entries.append(BarChartDataEntry(x: Double(x), y: Double(days["\(x)"]!) ))
         }
         
         let set = BarChartDataSet(entries: entries)
@@ -101,4 +103,13 @@ class MainVC: UIViewController, ChartViewDelegate{
     }
 
 
+}
+extension Date {
+    func get(_ components: Calendar.Component..., calendar: Calendar = Calendar.current) -> DateComponents {
+        return calendar.dateComponents(Set(components), from: self)
+    }
+
+    func get(_ component: Calendar.Component, calendar: Calendar = Calendar.current) -> Int {
+        return calendar.component(component, from: self)
+    }
 }
