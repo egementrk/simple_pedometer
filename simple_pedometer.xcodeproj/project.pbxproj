@@ -13,7 +13,6 @@
 		888E4345275CE055003C103E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888E4344275CE055003C103E /* AppDelegate.swift */; };
 		888E4347275CE055003C103E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888E4346275CE055003C103E /* SceneDelegate.swift */; };
 		888E434C275CE055003C103E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 888E434A275CE055003C103E /* Main.storyboard */; };
-		888E434F275CE055003C103E /* simple_pedometer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 888E434D275CE055003C103E /* simple_pedometer.xcdatamodeld */; };
 		888E4351275CE057003C103E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 888E4350275CE057003C103E /* Assets.xcassets */; };
 		888E4354275CE057003C103E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 888E4352275CE057003C103E /* LaunchScreen.storyboard */; };
 		888E435F275CE057003C103E /* simple_pedometerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888E435E275CE057003C103E /* simple_pedometerTests.swift */; };
@@ -47,7 +46,6 @@
 		888E4344275CE055003C103E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		888E4346275CE055003C103E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		888E434B275CE055003C103E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		888E434E275CE055003C103E /* simple_pedometer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = simple_pedometer.xcdatamodel; sourceTree = "<group>"; };
 		888E4350275CE057003C103E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		888E4353275CE057003C103E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		888E4355275CE057003C103E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -135,7 +133,6 @@
 				888E4350275CE057003C103E /* Assets.xcassets */,
 				888E4352275CE057003C103E /* LaunchScreen.storyboard */,
 				888E4355275CE057003C103E /* Info.plist */,
-				888E434D275CE055003C103E /* simple_pedometer.xcdatamodeld */,
 			);
 			path = simple_pedometer;
 			sourceTree = "<group>";
@@ -175,7 +172,6 @@
 				9596DA39E121B283DF9C1319 /* Pods-simple_pedometerTests.debug.xcconfig */,
 				DEF2AA92918CCFE3D038383C /* Pods-simple_pedometerTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -421,7 +417,6 @@
 				888E4345275CE055003C103E /* AppDelegate.swift in Sources */,
 				888E4379275CE175003C103E /* MainVC.swift in Sources */,
 				888E4347275CE055003C103E /* SceneDelegate.swift in Sources */,
-				888E434F275CE055003C103E /* simple_pedometer.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -799,19 +794,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		888E434D275CE055003C103E /* simple_pedometer.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				888E434E275CE055003C103E /* simple_pedometer.xcdatamodel */,
-			);
-			currentVersion = 888E434E275CE055003C103E /* simple_pedometer.xcdatamodel */;
-			path = simple_pedometer.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 888E4339275CE055003C103E /* Project object */;
 }

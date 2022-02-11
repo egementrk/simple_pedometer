@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21C52" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Daily" representedClassName="Daily" syncable="YES" codeGenerationType="class"/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21D49" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Step" representedClassName="Step" syncable="YES" codeGenerationType="class">
         <attribute name="current_step" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="Week" representedClassName="Week" syncable="YES" codeGenerationType="class">
+        <attribute name="friday" optional="YES" attributeType="String"/>
+        <attribute name="monday" optional="YES" attributeType="String"/>
+        <attribute name="saturday" optional="YES" attributeType="String"/>
+        <attribute name="sunday" optional="YES" attributeType="String"/>
+        <attribute name="thursday" optional="YES" attributeType="String"/>
+        <attribute name="tuesday" optional="YES" attributeType="String"/>
+        <attribute name="wednesday" optional="YES" attributeType="String"/>
+    </entity>
     <elements>
-        <element name="Daily" positionX="-63" positionY="-9" width="128" height="29"/>
         <element name="Step" positionX="-63" positionY="-18" width="127.953125" height="44"/>
+        <element name="Week" positionX="-63" positionY="-9" width="128" height="134"/>
     </elements>
 </model>

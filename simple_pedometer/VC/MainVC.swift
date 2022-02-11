@@ -17,7 +17,7 @@ class MainVC: UIViewController, ChartViewDelegate{
     //for store data
     let userDefaults = UserDefaults.standard
     
-    var days: [String: Int] = ["1":30,"2":24,"3":45,"4":25,"5":54,"6":50,"7":100]
+    var days: [String: String] = ["1":"0","2":"0","3":"0","4":"0","5":"0","6":"0","7":"0"]
     let date = Date()
     
     @IBOutlet weak var activityValue: UILabel!
@@ -33,9 +33,13 @@ class MainVC: UIViewController, ChartViewDelegate{
         super.viewDidLoad()
         
         barChart.delegate = self
-        
-        print("day: \(date.get(.weekdayOrdinal))")
-        
+
+        //the first day first seconds of the week app will be reset
+        if date.get(.weekday) == 0 && date.get(.hour) == 0 && date.get(.second) == 0{
+            for x in 1..<8 {
+                days["\(x)"]! = "0"
+            }
+        }
         
         if CMMotionActivityManager.isActivityAvailable(){
             //if detect any activity
@@ -43,10 +47,8 @@ class MainVC: UIViewController, ChartViewDelegate{
                 (data) in DispatchQueue.main.async {
                     if let activity = data {
                         if activity.walking == true {
-                            print("Walking")
                             self.activityValue?.text = "Walking"
                         }else if activity.running == true{
-                            print("Running")
                             self.activityValue?.text = "Running"
                         }
                     }
@@ -63,7 +65,11 @@ class MainVC: UIViewController, ChartViewDelegate{
                     if let response = data {
                         DispatchQueue.main.async {
                             self.stepValue.text = "\(currentStep + Int(response.numberOfSteps))"
-                                self.userDefaults.set(Int(self.stepValue.text!), forKey: "currentStep")
+                            
+                            // MARK: Data Save Section
+                            self.userDefaults.set(Int(self.stepValue.text!), forKey: "currentStep")
+                            // weekday starts at sunday it means if .weekday value equal 1 then day is sunday
+                            self.days[String(self.date.get(.weekday) != 1 ? self.date.get(.weekday) - 1 : 1)] = String(self.stepValue.text!)
                         }
                     }
                 }
@@ -78,11 +84,9 @@ class MainVC: UIViewController, ChartViewDelegate{
     
     // MARK: Data Save Section
     override func viewWillDisappear(_ animated: Bool) {
-        //userDefaults.set(Int(stepValue.text!), forKey: "currentStep")
     }
     
     // MARK: Graphic
-    // TODO: Gün değerleri 
     override func viewDidLayoutSubviews() {
         let width = view.frame.size.width
         super.viewDidLayoutSubviews()
@@ -92,11 +96,12 @@ class MainVC: UIViewController, ChartViewDelegate{
         var entries = [BarChartDataEntry]()
         
         for x in 1..<8 {
-            entries.append(BarChartDataEntry(x: Double(x), y: Double(days["\(x)"]!) ))
+            entries.append(BarChartDataEntry(x: Double(x), y: Double(days["\(x)"]!) ?? 0 ))
         }
         
         let set = BarChartDataSet(entries: entries)
         set.colors = ChartColorTemplates.joyful()
+        set.valueTextColor = .white
         let data = BarChartData(dataSet: set)
         barChart.data = data
         
@@ -104,6 +109,7 @@ class MainVC: UIViewController, ChartViewDelegate{
 
 
 }
+
 extension Date {
     func get(_ components: Calendar.Component..., calendar: Calendar = Calendar.current) -> DateComponents {
         return calendar.dateComponents(Set(components), from: self)
